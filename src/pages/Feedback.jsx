@@ -22,7 +22,7 @@ export const CreateFeedback = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const feedbackResponse = await axios.post(`${process.env.SERVER_URL}/feedbacks/`, {
+            const feedbackResponse = await axios.post(`${process.env.REACT_APP_SERVER_URL}/feedbacks/`, {
                 ...feedbackData,
                 topic: selectedFeedbackTopic
             }, { withCredentials: true });

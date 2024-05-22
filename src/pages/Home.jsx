@@ -9,7 +9,7 @@ export const Home = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`${process.env.SERVER_URL}/tournaments`)
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/tournaments`)
             .then((res) => {
                 setTournaments(res.data);
             })
@@ -20,7 +20,7 @@ export const Home = () => {
 
     const handleJoinTournament = async (tournamentId) => {
         try {
-            await axios.post(`${process.env.SERVER_URL}/tournaments/${tournamentId}/join`, {}, { withCredentials: true });
+            await axios.post(`${process.env.REACT_APP_SERVER_URL}/tournaments/${tournamentId}/join`, {}, { withCredentials: true });
             console.log(`Joined tournament with ID: ${tournamentId}`);
         } catch (error) {
             const { response } = error;
@@ -30,7 +30,7 @@ export const Home = () => {
 
     const handleEndTournament = async (tournamentId) => {
         try {
-            await axios.post(`${process.env.SERVER_URL}/tournaments/${tournamentId}/end`, {}, { withCredentials: true });
+            await axios.post(`${process.env.REACT_APP_SERVER_URL}/tournaments/${tournamentId}/end`, {}, { withCredentials: true });
             console.log(`Ended tournament with ID: ${tournamentId}`);
 
             navigate(`/tournaments/${tournamentId}/end`);
@@ -42,10 +42,10 @@ export const Home = () => {
 
     const handleUnjoinTournament = async (tournamentId) => {
         try {
-            const updatedUser = await axios.post(`${process.env.SERVER_URL}/tournaments/unjoin`, {}, { withCredentials: true });
+            const updatedUser = await axios.post(`${process.env.REACT_APP_SERVER_URL}/tournaments/unjoin`, {}, { withCredentials: true });
             console.log(`Unjoined tournament with ID: ${tournamentId}`);
 
-            const res = await axios.get(`${process.env.SERVER_URL}/tournaments`);
+            const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/tournaments`);
             setTournaments(res.data);
         } catch (error) {
             const { response } = error;

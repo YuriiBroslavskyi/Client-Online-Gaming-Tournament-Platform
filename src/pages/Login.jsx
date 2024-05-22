@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Login = () => {
     const handleGoogleAuth = async () => {
-        window.open(`${process.env.SERVER_URL}/auth/google`, '_self');
+        window.open(`${process.env.REACT_APP_SERVER_URL}/auth/google`, '_self');
     };
 
     return (
