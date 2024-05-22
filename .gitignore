@@ -57,12 +57,11 @@ jspm_packages/
 .nuxt/
 dist/
 
-# Gatsby files
-.cache/
-
 # vuepress build output
 .vuepress/dist
 
 # temporary folders
 temp/
 tmp/
+
+*/.env

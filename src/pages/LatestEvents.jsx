@@ -5,7 +5,7 @@ export const LatestEvents = () => {
     const [latestEvents, setLatestEvents] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3001/events/latest')
+        axios.get(`${process.env.SERVER_URL}/events/latest`)
             .then(res => {
                 setLatestEvents(res.data);
             })
@@ -33,12 +33,12 @@ export const LatestEvents = () => {
                             </>
                         )}
                         {event.eventType === 'league change' && (
-                            <>                      
-                            <div className="user-info">
-                                <img src={event.userId?.picture} alt="user photo" className="user-avatar" />
-                                <p>{`${event.userId.displayName} changed its league to ${event.leagueName}`}</p>
-                            </div>
-                            <p>{`On ${new Date(event.timestamp).toLocaleString('en-GB')}`}</p>
+                            <>
+                                <div className="user-info">
+                                    <img src={event.userId?.picture} alt="user photo" className="user-avatar" />
+                                    <p>{`${event.userId.displayName} changed its league to ${event.leagueName}`}</p>
+                                </div>
+                                <p>{`On ${new Date(event.timestamp).toLocaleString('en-GB')}`}</p>
                             </>
                         )}
                     </li>
